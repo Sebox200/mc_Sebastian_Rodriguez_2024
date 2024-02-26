@@ -1,0 +1,82 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Sebox200/mc_Sebastian_Rodriguez_2024/blob/main/TALLER_6\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import math\n",
+        "\n",
+        "pi = math.pi\n",
+        "\n",
+        "x = float(input(\"Ingrese alguno de los valores en radianes: \"))\n",
+        "\n",
+        "Es = (0.5 * 10**-8) * 100\n",
+        "\n",
+        "Ea = 100\n",
+        "\n",
+        "cos = 1\n",
+        "iteraciones = 1\n",
+        "signo = -1\n",
+        "\n",
+        "n = 2\n",
+        "while Ea > Es:\n",
+        "    valor_ant = cos\n",
+        "\n",
+        "    cos += signo * x**n / math.factorial(n)\n",
+        "\n",
+        "    Ea = abs((cos - valor_ant) / cos) * 100\n",
+        "\n",
+        "    iteraciones += 1\n",
+        "    n += 2\n",
+        "    signo *= -1\n",
+        "\n",
+        "print(cos)\n",
+        "print(Es)\n",
+        "print(Ea)"
+      ],
+      "metadata": {
+        "id": "kEYHF27teNwT",
+        "outputId": "b9b0989d-87f6-4a10-b4db-8cea6df310c3",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Ingrese un o de los valores en radianes: 1\n",
+            "0.5403023058795627\n",
+            "5e-07\n",
+            "3.8639029970123346e-07\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Te damos la bienvenida a Colaboratory",
+      "toc_visible": true,
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
