@@ -1,0 +1,96 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Sebox200/mc_Sebastian_Rodriguez_2024/blob/main/Taller_8%20(PARTE%201)\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def convertir_a_base_10(numero_base_8):\n",
+        "    resultado = 0\n",
+        "    for i in range(len(numero_base_8)):\n",
+        "        resultado += int(numero_base_8[i]) * (8 ** (len(numero_base_8) - i - 1))\n",
+        "    return resultado\n",
+        "\n",
+        "numeros_base_8 = ['500', '485', '5445', '277']\n",
+        "\n",
+        "for indice, numero in enumerate(numeros_base_8, start=1):\n",
+        "    resultado = convertir_a_base_10(numero)\n",
+        "    print(f\"{chr(96 + indice)}) {numero} en base 10 es: {resultado}\")\n"
+      ],
+      "metadata": {
+        "id": "XvPq6te1WOjj",
+        "outputId": "501dde4b-2823-406d-8657-33d5a3e197c0",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "a) 500 en base 10 es: 320\n",
+            "b) 485 en base 10 es: 325\n",
+            "c) 5445 en base 10 es: 2853\n",
+            "d) 277 en base 10 es: 191\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def convertir_a_hexadecimal(numero):\n",
+        "    return hex(numero)\n",
+        "\n",
+        "numeros = [611, 48, 5000, 6199]\n",
+        "\n",
+        "for indice, numero in enumerate(numeros, start=1):\n",
+        "    print(f\"{chr(96 + indice)}) {numero} en base 16 es: {convertir_a_hexadecimal(numero)}\")\n"
+      ],
+      "metadata": {
+        "id": "wFxYOhmXVVEf",
+        "outputId": "e4977611-6a88-4300-b0df-3ae26ec4cc36",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "a) 611 en base 16 es: 0x263\n",
+            "b) 48 en base 16 es: 0x30\n",
+            "c) 5000 en base 16 es: 0x1388\n",
+            "d) 6199 en base 16 es: 0x1837\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Te damos la bienvenida a Colaboratory",
+      "toc_visible": true,
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
