@@ -1,0 +1,79 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Sebox200/mc_Sebastian_Rodriguez_2024/blob/main/Taller_9\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import math\n",
+        "\n",
+        "def seno_aproximado(radianes, es):\n",
+        "    termino_actual = radianes\n",
+        "    seno_estimado = radianes\n",
+        "    iteracion = 1\n",
+        "    while True:\n",
+        "        termino_actual = -termino_actual * radianes * radianes / ((2 * iteracion) * (2 * iteracion + 1))\n",
+        "        seno_estimado += termino_actual\n",
+        "        ea = abs(termino_actual / seno_estimado) * 100\n",
+        "        if ea < es:\n",
+        "            break\n",
+        "        iteracion += 1\n",
+        "    return seno_estimado, ea, iteracion\n",
+        "\n",
+        "def main():\n",
+        "    radianes = float(input(\"Ingrese el valor en radianes: \"))\n",
+        "    es = float(input(\"Ingrese el criterio de error esperado (εs): \"))\n",
+        "    resultado, error_aproximado, iteraciones = seno_aproximado(radianes, es)\n",
+        "    print(f\"El seno aproximado de {radianes} radianes es: {resultado}\")\n",
+        "    print(f\"Error aproximado relativo porcentual: {error_aproximado:.8f}%\")\n",
+        "    print(f\"Número de iteraciones realizadas: {iteraciones}\")\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "    main()\n"
+      ],
+      "metadata": {
+        "id": "ULwhTIxvG-OZ",
+        "outputId": "002397f6-d005-4823-d36f-5a7eeabe464c",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Ingrese el valor en radianes: 6\n",
+            "Ingrese el criterio de error esperado (εs): 3\n",
+            "El seno aproximado de 6.0 radianes es: -0.2798160636356124\n",
+            "Error aproximado relativo porcentual: 1.79022037%\n",
+            "Número de iteraciones realizadas: 9\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Te damos la bienvenida a Colaboratory",
+      "toc_visible": true,
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
