@@ -1,0 +1,90 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Sebox200/mc_Sebastian_Rodriguez_2024/blob/main/Taller_15\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def gauss_jordan(matriz):\n",
+        "    n = len(matriz)\n",
+        "\n",
+        "    for i in range(n):\n",
+        "        pivot = matriz[i][i]\n",
+        "\n",
+        "        if pivot == 0:\n",
+        "            for k in range(i + 1, n):\n",
+        "                if matriz[k][i] != 0:\n",
+        "                    matriz[i], matriz[k] = matriz[k], matriz[i]\n",
+        "                    pivot = matriz[i][i]\n",
+        "                    break\n",
+        "            else:\n",
+        "                print(\"El sistema tiene infinitas soluciones.\")\n",
+        "                return\n",
+        "\n",
+        "        for j in range(i, n + 1):\n",
+        "            matriz[i][j] /= pivot\n",
+        "\n",
+        "        for k in range(n):\n",
+        "            if k != i:\n",
+        "                factor = matriz[k][i]\n",
+        "                for j in range(i, n + 1):\n",
+        "                    matriz[k][j] -= factor * matriz[i][j]\n",
+        "\n",
+        "    for i in range(n):\n",
+        "        print(\"x\" + str(i + 1) + \" =\", matriz[i][n])\n",
+        "\n",
+        "\n",
+        "matriz = [\n",
+        "    [2, 2, 0, 10],\n",
+        "    [3, 3, 4, 23],\n",
+        "    [4, 0, 1, 30]\n",
+        "]\n",
+        "\n",
+        "print(\"Soluciones del sistema de ecuaciones:\")\n",
+        "gauss_jordan(matriz)"
+      ],
+      "metadata": {
+        "id": "qFvQm-JYsHPP",
+        "outputId": "68e6ba0b-348a-4bec-e7ea-4974132f82e7",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Soluciones del sistema de ecuaciones:\n",
+            "x1 = 7.0\n",
+            "x2 = -2.0\n",
+            "x3 = 2.0\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Te damos la bienvenida a Colaboratory",
+      "toc_visible": true,
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
