@@ -1,0 +1,90 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Sebox200/mc_Sebastian_Rodriguez_2024/blob/main/Taller%2017\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "# Datos\n",
+        "X = np.array([1, 2, 3, 4, 5, 6, 7, 8])\n",
+        "y = np.array([9, 7, 8, 5, 6, 4.5, 4, 2.5])\n",
+        "\n",
+        "# Calculando la media de X y y\n",
+        "mean_x = np.mean(X)\n",
+        "mean_y = np.mean(y)\n",
+        "\n",
+        "# Calculando los términos necesarios para la fórmula de la regresión\n",
+        "n = len(X)\n",
+        "numerador = np.sum((X - mean_x) * (y - mean_y))\n",
+        "denominador = np.sum((X - mean_x) ** 2)\n",
+        "\n",
+        "# Coeficientes de la regresión\n",
+        "beta1 = numerador / denominador\n",
+        "beta0 = mean_y - (beta1 * mean_x)\n",
+        "\n",
+        "# Imprimiendo los coeficientes\n",
+        "print(\"Coeficiente beta1:\", beta1)\n",
+        "print(\"Coeficiente beta0:\", beta0)\n",
+        "\n",
+        "# Prediciendo y ajustando la línea recta\n",
+        "y_pred = beta0 + beta1 * X\n",
+        "\n",
+        "# Imprimiendo las predicciones\n",
+        "print(\"\\nPredicciones:\")\n",
+        "for i in range(len(X)):\n",
+        "    print(\"X =\", X[i], \"\\tPredicción y =\", y_pred[i])\n"
+      ],
+      "metadata": {
+        "id": "xanUtZq0tjbP",
+        "outputId": "bcf69af2-2a1e-40e3-e96c-cc6f5a35c056",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Coeficiente beta1: -0.8333333333333334\n",
+            "Coeficiente beta0: 9.5\n",
+            "\n",
+            "Predicciones:\n",
+            "X = 1 \tPredicción y = 8.666666666666666\n",
+            "X = 2 \tPredicción y = 7.833333333333333\n",
+            "X = 3 \tPredicción y = 7.0\n",
+            "X = 4 \tPredicción y = 6.166666666666666\n",
+            "X = 5 \tPredicción y = 5.333333333333333\n",
+            "X = 6 \tPredicción y = 4.5\n",
+            "X = 7 \tPredicción y = 3.666666666666666\n",
+            "X = 8 \tPredicción y = 2.833333333333333\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "toc_visible": true,
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
