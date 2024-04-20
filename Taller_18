@@ -1,0 +1,82 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Sebox200/mc_Sebastian_Rodriguez_2024/blob/main/Taller_18\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "def exponential_regression(x, y):\n",
+        "    # Transformamos los datos a logaritmos naturales\n",
+        "    x_log = np.log(x)\n",
+        "    y_log = np.log(y)\n",
+        "\n",
+        "    # Calculamos la suma de los productos de x y y\n",
+        "    xy_log_sum = np.sum(x_log * y_log)\n",
+        "\n",
+        "    # Calculamos la suma de x y la suma de y\n",
+        "    x_sum = np.sum(x_log)\n",
+        "    y_sum = np.sum(y_log)\n",
+        "\n",
+        "    # Calculamos la cantidad de datos\n",
+        "    n = len(x)\n",
+        "\n",
+        "    # Calculamos los coeficientes de la regresión\n",
+        "    b = (n * xy_log_sum - x_sum * y_sum) / (n * np.sum(x_log**2) - x_sum**2)\n",
+        "    a = np.exp((y_sum - b * x_sum) / n)\n",
+        "\n",
+        "    return a, b\n",
+        "\n",
+        "# Datos de entrada\n",
+        "x = np.array([1, 2, 3, 4, 5, 6])\n",
+        "y = np.array([1.6, 2.3, 3.4, 4.5, 6.4, 9])\n",
+        "\n",
+        "# Realizamos la regresión\n",
+        "a, b = exponential_regression(x, y)\n",
+        "\n",
+        "# Imprimimos los resultados\n",
+        "print(\"El modelo exponencial es: y = {:.4f} * exp({:.4f} * x)\".format(a, b))\n"
+      ],
+      "metadata": {
+        "id": "bZIhM-9zYy6B",
+        "outputId": "16c6e58e-7e21-4a1e-e190-18a30b06379d",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "El modelo exponencial es: y = 1.3705 * exp(0.9413 * x)\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Te damos la bienvenida a Colaboratory",
+      "toc_visible": true,
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
