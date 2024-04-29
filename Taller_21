@@ -1,0 +1,72 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Sebox200/mc_Sebastian_Rodriguez_2024/blob/main/Taller_21\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "# Datos de la tabla\n",
+        "x = np.array([1, 3, 5, 7, 9, 11, 13])\n",
+        "y = np.array([7.4, 1.8, -1, -1.8, -1.2, 2.2, 7.2])\n",
+        "\n",
+        "# Ajuste polinomial de segundo grado\n",
+        "coefficients = np.polyfit(x, y, 2)\n",
+        "polynomial = np.poly1d(coefficients)\n",
+        "\n",
+        "# Coeficiente de correlación (r)\n",
+        "correlation_matrix = np.corrcoef(x, y)\n",
+        "correlation_coefficient = correlation_matrix[0, 1]\n",
+        "\n",
+        "# Imprimir el polinomio ajustado y el coeficiente de correlación\n",
+        "print(\"Polinomio ajustado:\")\n",
+        "print(polynomial)\n",
+        "print(\"\\nCoeficiente de correlación (r):\", correlation_coefficient)\n"
+      ],
+      "metadata": {
+        "id": "AShLCrKCx8VG",
+        "outputId": "bbd6cc70-a28c-49dc-9988-e2d3655d97ab",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Polinomio ajustado:\n",
+            "        2\n",
+            "0.2583 x - 3.617 x + 10.61\n",
+            "\n",
+            "Coeficiente de correlación (r): -7.080772546222749e-17\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Te damos la bienvenida a Colaboratory",
+      "toc_visible": true,
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
