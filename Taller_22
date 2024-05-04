@@ -1,0 +1,83 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Sebox200/mc_Sebastian_Rodriguez_2024/blob/main/Taller_22\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "from scipy.stats import linregress\n",
+        "\n",
+        "# Datos de la tabla\n",
+        "data = np.array([\n",
+        "    [1, 0, 0.6],\n",
+        "    [1, 1, 2],\n",
+        "    [2, 1, 0.1],\n",
+        "    [3, 2, 0.3],\n",
+        "    [1, 2, 2.2],\n",
+        "    [2, 3, 2.3],\n",
+        "    [3, 3, 0.8],\n",
+        "    [3, 1, -1]\n",
+        "])\n",
+        "\n",
+        "# Extraer las columnas de datos\n",
+        "x1 = data[:, 0]\n",
+        "x2 = data[:, 1]\n",
+        "y = data[:, 2]\n",
+        "\n",
+        "# Crear una matriz de diseño con x1 y x2\n",
+        "X = np.column_stack((np.ones_like(x1), x1, x2))\n",
+        "\n",
+        "# Calcular los coeficientes de la regresión lineal (b0, b1, b2)\n",
+        "coefficients, _, _, _ = np.linalg.lstsq(X, y, rcond=None)\n",
+        "\n",
+        "# Calcular el coeficiente de correlación\n",
+        "slope, intercept, r_value, _, _ = linregress(y, np.dot(X, coefficients))\n",
+        "\n",
+        "# Mostrar los resultados\n",
+        "print(\"Coeficientes de la función lineal (b0, b1, b2):\", coefficients)\n",
+        "print(\"Coeficiente de correlación (r):\", r_value)\n"
+      ],
+      "metadata": {
+        "id": "bLVbQLHheajQ",
+        "outputId": "e6415827-0867-4feb-81c4-10bb08ce8455",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Coeficientes de la función lineal (b0, b1, b2): [ 1.90196078 -1.24509804  0.92352941]\n",
+            "Coeficiente de correlación (r): 0.9762132990912783\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Te damos la bienvenida a Colaboratory",
+      "toc_visible": true,
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
