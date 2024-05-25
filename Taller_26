@@ -1,0 +1,147 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Sebox200/mc_Sebastian_Rodriguez_2024/blob/main/Taller_26\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Nodo:\n",
+        "    def __init__(self, valor):\n",
+        "        self.valor = valor\n",
+        "        self.izquierda = None\n",
+        "        self.derecha = None\n",
+        "\n",
+        "def insertar(raiz, valor):\n",
+        "    if raiz is None:\n",
+        "        return Nodo(valor)\n",
+        "    else:\n",
+        "        if valor < raiz.valor:\n",
+        "            raiz.izquierda = insertar(raiz.izquierda, valor)\n",
+        "        else:\n",
+        "            raiz.derecha = insertar(raiz.derecha, valor)\n",
+        "    return raiz\n",
+        "\n",
+        "def inorder(raiz):\n",
+        "    if raiz:\n",
+        "        inorder(raiz.izquierda)\n",
+        "        print(raiz.valor, end=\" \")\n",
+        "        inorder(raiz.derecha)\n",
+        "\n",
+        "# Conjunto A\n",
+        "A = [22, 15, 1, 12, 4, 20, 13, 30, 18, 5, 6, 29, 11, 27, 7, 28, 10, 14, 21, 2, 19, 3]\n",
+        "\n",
+        "# Construir el árbol de búsqueda binaria\n",
+        "raiz = None\n",
+        "for elemento in A:\n",
+        "    raiz = insertar(raiz, elemento)\n",
+        "\n",
+        "# Recorrido inorder para imprimir los elementos en orden ascendente\n",
+        "print(\"Árbol de búsqueda binaria (inorder):\")\n",
+        "inorder(raiz)\n"
+      ],
+      "metadata": {
+        "id": "vTOH-_i5tQgL",
+        "outputId": "ebd11869-e0bd-4cf0-e768-93f05800292d",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Árbol de búsqueda binaria (inorder):\n",
+            "1 2 3 4 5 6 7 10 11 12 13 14 15 18 19 20 21 22 27 28 29 30 "
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class NodoB:\n",
+        "    def __init__(self, m):\n",
+        "        self.claves = []\n",
+        "        self.hijos = []\n",
+        "        self.m = m\n",
+        "\n",
+        "    def insertar(self, clave):\n",
+        "        if len(self.claves) < self.m - 1:\n",
+        "            self.claves.append(clave)\n",
+        "            self.claves.sort()\n",
+        "        else:\n",
+        "            self.claves.append(clave)\n",
+        "            self.claves.sort()\n",
+        "            mediana = len(self.claves) // 2\n",
+        "            nueva_clave_padre = self.claves[mediana]\n",
+        "            nuevo_nodo_hijo_izquierdo = NodoB(self.m)\n",
+        "            nuevo_nodo_hijo_izquierdo.claves = self.claves[:mediana]\n",
+        "            nuevo_nodo_hijo_derecho = NodoB(self.m)\n",
+        "            nuevo_nodo_hijo_derecho.claves = self.claves[mediana+1:]\n",
+        "            self.claves = [nueva_clave_padre]\n",
+        "            self.hijos = [nuevo_nodo_hijo_izquierdo, nuevo_nodo_hijo_derecho]\n",
+        "\n",
+        "    def imprimir(self):\n",
+        "        print(self.claves)\n",
+        "        for hijo in self.hijos:\n",
+        "            hijo.imprimir()\n",
+        "\n",
+        "# Conjunto A\n",
+        "A = [22, 15, 1, 12, 4, 20, 13, 30, 18, 5, 6, 29, 11, 27, 7, 28, 10, 14, 21, 2, 19, 3]\n",
+        "\n",
+        "# Construir el árbol B\n",
+        "arbol_b = NodoB(5)\n",
+        "for elemento in A:\n",
+        "    arbol_b.insertar(elemento)\n",
+        "\n",
+        "# Imprimir el árbol B\n",
+        "print(\"Árbol B:\")\n",
+        "arbol_b.imprimir()\n"
+      ],
+      "metadata": {
+        "id": "tsQ1W9IttZg7",
+        "outputId": "1a2fdbe4-76b0-4fa0-dcf2-71dbeb817b75",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Árbol B:\n",
+            "[3, 14]\n",
+            "[2, 11]\n",
+            "[19, 21]\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Te damos la bienvenida a Colaboratory",
+      "toc_visible": true,
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
